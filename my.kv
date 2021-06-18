@@ -1,0 +1,39 @@
+#:kivy 1.0.9
+
+# Button in the Bottom Left Corner
+<BLCButton@Button>:
+	size_hint: 0.1, 0.1
+	font_size: min(self.height * 0.7, self.width * 1.7 / len(self.text)) if len(self.text) else self.height
+	halign: "center"
+	valign: "middle"
+	bold: True
+
+# Label for screen titles
+<TitleLabel@Label>:
+	bold: True
+	font_size: min(self.width * 0.1, self.height * 0.6)
+	pos_hint: {"x": 0, "y": 0.1}
+
+# Formatting information for StartScreen
+<StartScreen>:
+	orientation: "vertical"
+	size: root.size
+	TitleLabel:
+		id: title
+		text: root.name
+	BLCButton:
+		id: switch
+		text: "Switch Screen"
+		on_release: root.switchScreen("second")
+
+# Formatting information for SecondScreen
+<SecondScreen>:
+	orientation: "vertical"
+	size: root.size
+	TitleLabel:
+		id: title
+		text: root.name
+	BLCButton:
+		id: switch
+		text: "Switch Screen"
+		on_release: root.switchScreen("start")
